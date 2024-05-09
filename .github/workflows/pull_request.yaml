@@ -25,11 +25,6 @@ jobs:
     steps:
     - name: Checkout Repository
       uses: actions/checkout@v4
-    - name: Directories don't exist
-      run: |
-         ls $HOME/install
-         ls $HOME/install/include
-         ls $HOME/install/lib
     - name: Install hello world
       uses: ./.github/actions/install_hello_world
     - name: Verify
