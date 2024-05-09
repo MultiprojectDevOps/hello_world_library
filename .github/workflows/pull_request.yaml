@@ -1,4 +1,4 @@
-# Copyright 2024 Multiproject DevOps Team
+# Copyright 2024 Multiproject Devops Team
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,14 +12,22 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-cmake_minimum_required(VERSION 3.14)
+name: Pull Request Workflow
 
-project(hello_world VERSION "1.0.0" LANGUAGES CXX)
-include(cmake/get_cmaize.cmake)
-
-cmaize_add_library(
-    hello_world 
-    SOURCE_DIR "${CMAKE_CURRENT_LIST_DIR}/src"  
-    INCLUDE_DIRS "${CMAKE_CURRENT_LIST_DIR}/include/hello_world"
-)
-cmaize_add_package(hello_world NAMESPACE hello_world::)
+on:
+  pull_request:
+    branches:
+      - main
+  
+jobs:
+  test_build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v4
+    - name: Install hello world
+      uses: ./.github/actions/install_hello_world
+    - name: Verify
+      run: |
+         ls $HOME/install/include
+         ls $HOME/install/lib/hello_world

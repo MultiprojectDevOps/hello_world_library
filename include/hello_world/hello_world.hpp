@@ -13,13 +13,11 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
-
-#include <hello_world/hello_world.hpp>
+#pragma once
+#include <string>
 
 namespace hello_world {
 
-std::string say_hello() {
-    return "Hello World!!!";
-}
+std::string say_hello();
 
 }
