@@ -20,6 +20,6 @@ include(cmake/get_cmaize.cmake)
 cmaize_add_library(
     hello_world 
     SOURCE_DIR "${CMAKE_CURRENT_LIST_DIR}/src"  
-    INCLUDE_DIRS "${CMAKE_CURRENT_LIST_DIR}/include"
+    INCLUDE_DIRS "${CMAKE_CURRENT_LIST_DIR}/include/hello_world"
 )
 cmaize_add_package(hello_world NAMESPACE hello_world::)
