@@ -26,6 +26,6 @@ jobs:
     - name: Checkout Repository
       uses: actions/checkout@v4
     - name: Install hello world
-      uses: ./actions/install_hello_world
+      uses: ./.github/actions/install_hello_world
     - name: Verify
       run: ls $HOME/install
