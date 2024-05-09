@@ -20,7 +20,10 @@ runs:
               -Bbuild \
               -DCMAKE_CXX_COMPILER=gcc \
               -DCMAKE_INSTALL_PREFIX=${{ inputs.install_location }}
+      shell: bash
     - name: Build Hello World Library
       run: cmake --build build
+      shell: bash
     - name: Install Hello World Library
       run: cmake --build build --target install
+      shell: bash
