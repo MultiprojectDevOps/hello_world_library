@@ -1,0 +1,45 @@
+# Copyright 2024 Multiproject Devops Team
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+# http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+name: Pull Request Workflow
+
+on:
+  pull_request:
+    branches:
+      - master
+  
+jobs:
+  test_build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v4
+    - name: Get Compilers and CMake
+    - run: |
+         sudo apt update
+         sudo apt install gcc-11 g++-11 cmake
+         gcc --version
+      shell: bash
+    - name: Configure Hello World Library
+      run:  | 
+        cmake -H. \
+              -Bbuild \
+              -DCMAKE_CXX_COMPILER=gcc \
+              -DCMAKE_INSTALL_PREFIX=$HOME/install
+    - name: Build Hello World Library
+      run: cmake --build build
+    - name: Install Hello World Library
+      run: cmake --build build --target install
+    - name: Verify
+      run: ls $HOME/install
