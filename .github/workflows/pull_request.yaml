@@ -29,6 +29,5 @@ jobs:
       uses: ./.github/actions/install_hello_world
     - name: Verify
       run: |
-         ls $HOME/install
          ls $HOME/install/include
-         ls $HOME/install/lib
+         ls $HOME/install/lib/hello_world
