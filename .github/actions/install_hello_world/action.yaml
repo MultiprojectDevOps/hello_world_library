@@ -1,13 +1,27 @@
 name: "Install Hello World Library"
 description: "Installs the Hello World Library"
 inputs:
+  work_directory:
+    description: "Full path where we should checkout the library to?"
+    required: false
+    default: ${GITHUB_WORKSPACE}/hello_world_library
   install_location: 
     description: "Full path to where the library should be installed"
     required: false
-    default: $HOME/install
+    default: ${GITHUB_WORKSPACE}/install
+  do_checkout:
+    description: "Do we need to checkout Hello World Library?"
+    required: false
+    default: true
 runs:
   using: "composite"
-  steps:
+  steps: 
+    - name: Checkout Repository
+      if: ${{ inputs.do_checkout }}
+      uses: actions/checkout@v4
+      with:
+        repository: MultiprojectDevOps/hello_world_library
+        path: ${{ inputs.work_directory }}
     - name: Get Compilers and CMake
       run: |
          sudo apt update
@@ -16,15 +30,15 @@ runs:
       shell: bash
     - name: Configure Hello World Library
       run:  | 
-        cmake -H. \
-              -Bbuild \
+        cmake -H${{ inputs.work_directory }} \
+              -B${{ inputs.work_directory }}/build \
               -DCMAKE_CXX_COMPILER=gcc \
               -DBUILD_SHARED_LIBS=TRUE \
               -DCMAKE_INSTALL_PREFIX=${{ inputs.install_location }}
       shell: bash
     - name: Build Hello World Library
-      run: cmake --build build
+      run: cmake --build ${{ inputs.work_directory }}/build
       shell: bash
     - name: Install Hello World Library
-      run: cmake --build build --target install
+      run: cmake --build ${{ inputs.work_directory }}/build --target install
       shell: bash

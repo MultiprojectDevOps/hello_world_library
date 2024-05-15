@@ -25,9 +25,13 @@ jobs:
     steps:
     - name: Checkout Repository
       uses: actions/checkout@v4
-    - name: Install hello world
+    - name: Install Hello World Library
       uses: ./.github/actions/install_hello_world
+      with:
+        do_checkout: false
+        work_directory: ${GITHUB_WORKSPACE}
     - name: Verify
       run: |
-         ls $HOME/install/include
-         ls $HOME/install/lib/hello_world
+         pwd
+         ls ${GITHUB_WORKSPACE}/install/include
+         ls ${GITHUB_WORKSPACE}/install/lib/hello_world
