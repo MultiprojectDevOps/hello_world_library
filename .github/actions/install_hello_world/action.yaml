@@ -5,13 +5,15 @@ inputs:
     description: "Full path to where the library should be installed"
     required: false
     default: $HOME/install
+  do_checkout:
+    description: "Do we need to checkout Hello World Library?"
+    required: false
+    default: true
 runs:
   using: "composite"
   steps:
-    - name: Where am i
-      run: pwd
-      shell: bash
     - name: Checkout Repository
+      if: ${{ inputs.do_checkout }}
       uses: actions/checkout@v4
       with:
         repository: MultiprojectDevOps/hello_world_library

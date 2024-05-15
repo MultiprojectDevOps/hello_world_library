@@ -27,6 +27,8 @@ jobs:
       uses: actions/checkout@v4
     - name: Install Hello World Library
       uses: ./.github/actions/install_hello_world
+      with:
+        do_checkout: false
     - name: Verify
       run: |
          pwd
