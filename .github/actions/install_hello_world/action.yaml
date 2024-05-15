@@ -8,6 +8,10 @@ inputs:
 runs:
   using: "composite"
   steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v4
+      with:
+        repository: MultiprojectDevOps/hello_world_library
     - name: Get Compilers and CMake
       run: |
          sudo apt update

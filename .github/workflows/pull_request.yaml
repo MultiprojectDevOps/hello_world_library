@@ -23,11 +23,10 @@ jobs:
   test_build:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout Repository
-      uses: actions/checkout@v4
-    - name: Install hello world
+    - name: Install Hello World Library
       uses: ./.github/actions/install_hello_world
     - name: Verify
       run: |
+         pwd
          ls $HOME/install/include
          ls $HOME/install/lib/hello_world
