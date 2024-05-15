@@ -8,6 +8,9 @@ inputs:
 runs:
   using: "composite"
   steps:
+    - name: Where am i
+      run: pwd
+      shell: bash
     - name: Checkout Repository
       uses: actions/checkout@v4
       with:
