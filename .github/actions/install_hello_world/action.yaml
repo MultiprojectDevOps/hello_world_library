@@ -16,15 +16,15 @@ inputs:
 runs:
   using: "composite"
   steps: 
-    - name: Checkout Repository
-      if: ${{ inputs.do_checkout }}
-      run: |
-         if [ ${{ inputs.do_checkout }} ]; then \
-             git clone \
-             https://www.github.com/MultiprojectDevOps/hello_world_library.git \
-             ${{ inputs.work_directory }}
-         fi 
-      shell: bash
+    # - name: Checkout Repository
+    #   if: ${{ inputs.do_checkout }}
+    #   run: |
+    #      if [ ${{ inputs.do_checkout }} ]; then \
+    #          git clone \
+    #          https://www.github.com/MultiprojectDevOps/hello_world_library.git \
+    #          ${{ inputs.work_directory }}
+    #      fi 
+    #   shell: bash
     - name: Get Compilers and CMake
       run: |
          sudo apt update
