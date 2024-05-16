@@ -29,9 +29,7 @@ jobs:
       uses: ./.github/actions/install_hello_world
       with:
         do_checkout: false
-        work_directory: ${GITHUB_WORKSPACE}
     - name: Verify
       run: |
-         pwd
          ls ${GITHUB_WORKSPACE}/install/include
          ls ${GITHUB_WORKSPACE}/install/lib/hello_world

@@ -4,7 +4,7 @@ inputs:
   work_directory:
     description: "Full path where we should checkout the library to?"
     required: false
-    default: ${GITHUB_WORKSPACE}/hello_world_library
+    default: ${GITHUB_WORKSPACE}
   install_location: 
     description: "Full path to where the library should be installed"
     required: false
@@ -17,11 +17,13 @@ runs:
   using: "composite"
   steps: 
     - name: Checkout Repository
-      if: ${{ inputs.do_checkout }}
-      uses: actions/checkout@v4
-      with:
-        repository: MultiprojectDevOps/hello_world_library
-        path: ${{ inputs.work_directory }}
+      run: |
+         if ${{ inputs.do_checkout }} ; then \
+             git clone \
+             https://www.github.com/MultiprojectDevOps/hello_world_library.git \
+             ${{ inputs.work_directory }}
+         fi 
+      shell: bash
     - name: Get Compilers and CMake
       run: |
          sudo apt update
