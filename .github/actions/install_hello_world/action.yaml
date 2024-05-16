@@ -22,6 +22,7 @@ runs:
          git clone \
          https://www.github.com/MultiprojectDevOps/hello_world_library.git \
          ${{ inputs.work_directory }}
+      shell: bash
     - name: Get Compilers and CMake
       run: |
          sudo apt update
