@@ -20,7 +20,7 @@ function(get_cmaize)
     FetchContent_Declare(
         cmaize
         GIT_REPOSITORY https://github.com/CMakePP/CMaize
-        GIT_TAG v1.1.1
+        GIT_TAG v1.1.2
     )
     FetchContent_MakeAvailable(cmaize)
 endfunction()
