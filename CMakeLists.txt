@@ -14,12 +14,13 @@
 
 cmake_minimum_required(VERSION 3.14)
 
-project(hello_world VERSION "1.0.0" LANGUAGES CXX)
+project(hello_world_library VERSION "1.0.0" LANGUAGES CXX)
 include(cmake/get_cmaize.cmake)
 
 cmaize_add_library(
-    hello_world 
+    hello_world_library
     SOURCE_DIR "${CMAKE_CURRENT_LIST_DIR}/src"  
-    INCLUDE_DIRS "${CMAKE_CURRENT_LIST_DIR}/include/hello_world"
+    INCLUDE_DIRS "${CMAKE_CURRENT_LIST_DIR}/include/hello_world_library"
+    
 )
-cmaize_add_package(hello_world NAMESPACE hello_world::)
+cmaize_add_package(hello_world_library NAMESPACE hello_world_library::)

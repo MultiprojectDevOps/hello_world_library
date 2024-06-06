@@ -14,7 +14,7 @@
 * limitations under the License.
 */
 
-#include <hello_world/hello_world.hpp>
+#include <hello_world_library/hello_world_library.hpp>
 
 namespace hello_world {
 
