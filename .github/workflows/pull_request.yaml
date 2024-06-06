@@ -26,10 +26,10 @@ jobs:
     - name: Checkout Repository
       uses: actions/checkout@v4
     - name: Install Hello World Library
-      uses: ./.github/actions/install_hello_world
+      uses: ./.github/actions/install_hello_world_library
       with:
         do_checkout: false
     - name: Verify
       run: |
          ls ${GITHUB_WORKSPACE}/install/include
-         ls ${GITHUB_WORKSPACE}/install/lib/hello_world
+         ls ${GITHUB_WORKSPACE}/install/lib/hello_world_library
