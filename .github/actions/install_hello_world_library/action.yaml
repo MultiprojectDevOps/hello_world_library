@@ -35,7 +35,6 @@ runs:
         cmake -H${{ inputs.work_directory }} \
               -B${{ inputs.work_directory }}/build \
               -DCMAKE_CXX_COMPILER=g++ \
-              -DBUILD_SHARED_LIBS=TRUE \
               -DCMAKE_INSTALL_PREFIX=${{ inputs.install_location }}
       shell: bash
     - name: Build Hello World Library
