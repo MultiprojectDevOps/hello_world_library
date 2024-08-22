@@ -1,4 +1,4 @@
-# Copyright 2024 Multiproject Devops Team
+# Copyright 2024 Multi-Project DevOps
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -18,8 +18,12 @@ on:
   pull_request:
     branches:
       - main
-  
+
 jobs:
+  maintenance:
+    uses: MultiprojectDevOps/.github/.github/workflows/pull_request_common.yaml@main
+    with:
+      source_directories: 'include  src'
   test_build:
     runs-on: ubuntu-latest
     steps:
