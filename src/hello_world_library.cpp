@@ -18,8 +18,6 @@
 
 namespace hello_world {
 
-std::string 
-say_hello() 
-{ return "Hello World!!!"; }
+std::string say_hello() { return "Hello World!!!"; }
 
 } // namespace hello_world
