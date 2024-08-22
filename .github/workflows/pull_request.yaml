@@ -23,7 +23,7 @@ jobs:
   maintenance:
     uses: MultiprojectDevOps/.github/.github/workflows/pull_request_common.yaml@main
     with:
-      source_directories: 'include src'
+      source_directories: 'include  src'
   test_build:
     runs-on: ubuntu-latest
     steps:
