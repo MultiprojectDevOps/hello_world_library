@@ -21,7 +21,7 @@ on:
 
 jobs:
   maintenance:
-    uses: MultiprojectDevOps/.github/workflows/pull_request_common.yaml@main
+    uses: MultiprojectDevOps/.github/.github/workflows/pull_request_common.yaml@main
     with:
       source_directories: 'include src'
   test_build:
