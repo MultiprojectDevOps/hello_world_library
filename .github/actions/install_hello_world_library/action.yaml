@@ -1,3 +1,17 @@
+# Copyright 2024 Multi-Project DevOps
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+# http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
 name: "Install Hello World Library"
 description: "Installs the Hello World Library"
 inputs:
@@ -5,7 +19,7 @@ inputs:
     description: "Full path where we should checkout the library to?"
     required: false
     default: ${GITHUB_WORKSPACE}
-  install_location: 
+  install_location:
     description: "Full path to where the library should be installed"
     required: false
     default: ${GITHUB_WORKSPACE}/install
@@ -15,14 +29,14 @@ inputs:
     default: true
 runs:
   using: "composite"
-  steps: 
+  steps:
     - name: Checkout Repository
       run: |
          if ${{ inputs.do_checkout }} ; then \
              git clone \
              https://www.github.com/MultiprojectDevOps/hello_world_library.git \
              ${{ inputs.work_directory }}
-         fi 
+         fi
       shell: bash
     - name: Get Compilers and CMake
       run: |
@@ -31,7 +45,7 @@ runs:
          gcc --version
       shell: bash
     - name: Configure Hello World Library
-      run:  | 
+      run:  |
         cmake -H${{ inputs.work_directory }} \
               -B${{ inputs.work_directory }}/build \
               -DCMAKE_CXX_COMPILER=g++ \
